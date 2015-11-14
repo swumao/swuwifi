@@ -1,5 +1,5 @@
 # swuwifi
-A chrome extension can easliy login/logout your student account to access public network!
+A chrome extension can easliy login/logout your student account to access public network for swu of china!
 
 ## 安装(Install)
 
