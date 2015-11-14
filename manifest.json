@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
 	"name": "西大wifi登陆",
-	"version": "1.1",
+	"version": "1.2",
 	"description": "方便快捷地管理你的校园网",
 	"icons": {
 		"16": "images/icon16.png",
@@ -13,7 +13,7 @@
 			"19": "images/icon19.png",
 			"38": "images/icon38.png"
 		},
-		"default_title": "天气预报",
+		"default_title": "西大wifi登陆",
 		"default_popup": "popup.html"
 	},
 	"options_page": "options.html",
