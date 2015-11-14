@@ -63,4 +63,9 @@ document.getElementById('logout').onclick = function(){
 		if_login: "Y",
 		B2: "退出(Logout)"
 	}, "退出");
+	post1("http://service.swu.edu.cn/fee/remote_logout2.jsp",{
+		username: username,
+		password: password,
+		B1: "确认"
+	}, "退出");
 }
