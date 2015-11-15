@@ -1,12 +1,27 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>设置账号信息</title>
+		<link rel="stylesheet" href="css/pure-min.css">
+		<link rel="stylesheet" href="css/css.css">
 	</head>
 	<body>
-		Username:<input type="text" id="username"><br />
-		Password:<input type="password" id="password"><br />
-		<input type="button" id="save" value="保存">
+		<div class="pure-g main">
+			<div class="pure-u-1-1">
+				<form class="pure-form">
+					<fieldset>
+						<legend>设置校园网账号</legend>
+
+						<input type="text" placeholder="Account" id="username" required>
+						<input type="password" placeholder="Password" id="password" required>
+
+						<button type="button" class="pure-button pure-button-primary" id="save">保存</button>
+						<lable id="result">Some tips</lable>
+					</fieldset>
+				</form>
+			</div>
+		</div>
 		<script src="js/options.js"></script>
 	</body>
 </html>
