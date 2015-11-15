@@ -3,6 +3,7 @@
 	var username = "";
 	var password = "password";
 	var ip = "0.0.0.0";
+	var status = 0;
 	var nettype = 1;	// 1表示swuwifi，2表示wifidorm
 	Swuwifi = function(t){
 		this.nettype = t;
@@ -78,6 +79,46 @@
 					break;
 			}
 		},
+		forcelogout:function(){
+			this.post("http://service.swu.edu.cn/fee/remote_logout2.jsp", {
+				username: this.username,
+				password: this.password,
+				B1: "确认"
+			});
+		},
+		setStatus:function(){
+			if(this.status==1){
+				document.getElementById('status').style.color = "bule";
+			}else{
+				document.getElementById('status').style.color = "red";
+			}
+		},
+		check:function(text){
+			switch(this.nettype){
+				case 1:
+					if(text.indexOf("通过登陆审核")!=-1){	// 通过校园网网页登陆成功
+						this.status = 1;
+					}
+					if(text.indexOf("退出请求已被接受")!=-1){	// 校园网网页退出成功
+						this.status = 0;
+					}
+					break;
+				case 2:
+					if(text.indexOf("登陆成功")!=-1){	// 寝室网页登陆成功
+						this.status = 1;
+					}
+					if(text.indexOf("畅通无限")!=-1){	// 寝室网页退出登陆
+						this.status = 0;
+					}
+					break;
+				default:
+					break;
+			}
+			if(text.indexOf("成功退出")!=-1){	// 信息中心退出成功
+				this.status = 0;
+			}
+			this.setStatus();
+		},
 		post:function(url, params){
 			var postData = params;
 			postData = (function(obj){ // 转成post需要的字符串.
@@ -88,6 +129,7 @@
 				return str;
 			})(postData);
 			var xhr = new XMLHttpRequest();
+			var wifi = this;
 			xhr.open("POST", url, true);
 			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			xhr.onreadystatechange = function(){
@@ -100,11 +142,11 @@
 							var ipinput = text.getElementById('form1').getElementsByTagName('input');
 							this.ip = ipinput[2].value;
 						}
-						result.innerHTML = "hi "+username + "操作ok";
+						wifi.check(text);
 					}
 				}
 			};
 			xhr.send(postData);
-		}
+		},
 	};
 })();

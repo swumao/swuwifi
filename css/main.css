@@ -1,0 +1,16 @@
+body {
+	margin:0;
+	padding:0;
+}
+
+.pure-menu.pure-menu-open{
+	border: 0px;
+}
+
+.success{
+	background: rgb(28, 184, 65);
+}
+
+.error {
+	background: rgb(202, 60, 60)
+}

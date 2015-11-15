@@ -1,7 +1,7 @@
-var result = document.getElementById('result');
+// var result = document.getElementById('result');
 // var username = localStorage.username;
 // var password = localStorage.password;
-result.innerHTML = "hi ";
+// result.innerHTML = "hi ";
 // function post(url, PARAMS){
 // 	var temp = document.createElement("form");
 // 	temp.action = url;
@@ -46,11 +46,15 @@ result.innerHTML = "hi ";
 // 	};
 // 	xhr.send(postData);
 // }
-wifi = new Swuwifi(2);
+wifi = new Swuwifi(1);
 document.getElementById('login').onclick = function(){
 	wifi.login();
 }
 
 document.getElementById('logout').onclick = function(){
 	wifi.logout();
+}
+
+document.getElementById('forcelogout').onclick = function(){
+	wifi.forcelogout();
 }

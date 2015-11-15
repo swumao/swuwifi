@@ -9,17 +9,44 @@
 	<body>
 		<div class="pure-g main">
 			<div class="pure-u-1-1">
-				<form class="pure-form">
+				<form class="pure-form pure-form-aligned">
 					<fieldset>
-						<legend>设置校园网账号</legend>
-
-						<input type="text" placeholder="Account" id="username" required>
-						<input type="password" placeholder="Password" id="password" required>
-
-						<button type="button" class="pure-button pure-button-primary" id="save">保存</button>
-						<lable id="result">Some tips</lable>
+						<legend><h2>设置校园网账号</h2></legend>
+						<div class="pure-control-group">
+							<label for="username">Username</label>
+							<input type="text" placeholder="Account" id="username" required>
+						</div>
+						<div class="pure-control-group">
+							<label for="username">Password</label>
+							<input type="password" placeholder="Password" id="password" required>
+						</div>
+						<div class="pure-controls">
+							<button type="button" class="pure-button pure-button-primary" id="save">保存</button>
+							<lable id="result">Some tips</lable>
+						</div>
+						
 					</fieldset>
 				</form>
+			</div>
+			<div class="pure-u-1-1">
+				<h2>声明：</h2>
+				<p>
+					本软件属于开源软件，遵守Apache License 2.0，任何人都可以在开源协议允许的范围内进行操作。软件源代码仓库：<a href="https://github.com/swumao/swuwifi" target="_blank">这里</a>
+				</p>
+				<p>
+					软件本身不会将你的账号和密码等信息泄露，所有的数据都存储在本地机器上，所以你可以放心大胆地使用。
+				</p>
+				<p>
+					软件适用范围：
+					<ol>
+						<li>教学区连接swu-wifi</li>
+						<li>寝室连接swu-wifi-dorm</li>
+						<li>强制退出账号功能在寝室网络中也可以使用</li>
+					</ol>
+				</p>
+				<p>
+					当您发现本扩展功能不可用时，请注意更新您的版本，当前版本为：v1.4，最新版本在：<a href="https://github.com/swumao/swuwifi/releases" target="_blank">这里</a>
+				</p>
 			</div>
 		</div>
 		<script src="js/core.js"></script>
