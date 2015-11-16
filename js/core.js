@@ -88,7 +88,7 @@
 		},
 		setStatus:function(){
 			if(this.status==1){
-				document.getElementById('status').style.color = "bule";
+				document.getElementById('status').style.color = "green";
 			}else{
 				document.getElementById('status').style.color = "red";
 			}
@@ -96,13 +96,12 @@
 		check:function(text){
 			switch(this.nettype){
 				case 1:
-					if(text.indexOf("通过登陆审核")!=-1){	// 通过校园网网页登陆成功
+					if(text.indexOf("通过登录审核")!=-1){	// 通过校园网网页登陆成功
 						this.status = 1;
 					}
 					if(text.indexOf("退出请求已被接受")!=-1){	// 校园网网页退出成功
 						this.status = 0;
 					}
-					break;
 				case 2:
 					if(text.indexOf("登陆成功")!=-1){	// 寝室网页登陆成功
 						this.status = 1;
@@ -110,13 +109,14 @@
 					if(text.indexOf("畅通无限")!=-1){	// 寝室网页退出登陆
 						this.status = 0;
 					}
-					break;
 				default:
+					
 					break;
 			}
-			if(text.indexOf("成功退出")!=-1){	// 信息中心退出成功
+			if(text.indexOf("成功退出")!=-1 || text.indexOf("<form name=\"remote_logout2\">")!=-1){	// 信息中心退出成功
 				this.status = 0;
 			}
+			console.log(text);
 			this.setStatus();
 		},
 		post:function(url, params){
