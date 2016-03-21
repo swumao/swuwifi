@@ -7,6 +7,8 @@
 	var nettype = 1;	// 1表示swuwifi，2表示wifidorm
 	Swuwifi = function(t){
 		this.nettype = t;
+		this.status = 0;
+		this.ip = '0.0.0.0';
 		this.load();
 	};
 	Swuwifi.prototype = {
@@ -89,8 +91,10 @@
 		setStatus:function(){
 			if(this.status==1){
 				document.getElementById('status').style.color = "green";
-			}else{
+			}else if(this.status == 0){
 				document.getElementById('status').style.color = "red";
+			}else{
+				document.getElementById('status').style.color = "yellow";
 			}
 		},
 		check:function(text){
@@ -98,25 +102,30 @@
 				case 1:
 					if(text.indexOf("通过登录审核")!=-1){	// 通过校园网网页登陆成功
 						this.status = 1;
+						break;
 					}
 					if(text.indexOf("退出请求已被接受")!=-1){	// 校园网网页退出成功
 						this.status = 0;
+						break;
 					}
 				case 2:
-					if(text.indexOf("登陆成功")!=-1){	// 寝室网页登陆成功
+					if(text.indexOf("登陆成功")!=-1 || text.indexOf("登录成功")!=-1){	// 寝室网页登陆成功
 						this.status = 1;
+						break;
 					}
 					if(text.indexOf("畅通无限")!=-1){	// 寝室网页退出登陆
 						this.status = 0;
+						break;
 					}
 				default:
-					
+					this.status = 2;
 					break;
 			}
 			if(text.indexOf("成功退出")!=-1 || text.indexOf("<form name=\"remote_logout2\">")!=-1){	// 信息中心退出成功
 				this.status = 0;
 			}
 			console.log(text);
+			console.log(this.status);
 			this.setStatus();
 		},
 		post:function(url, params){
