@@ -7,5 +7,6 @@ pass.value = wifi.getPassword();
 document.getElementById('save').onclick = function(){
 	wifi.setUsername(user.value);
 	wifi.setPassword(pass.value);
+	wifi.save();
 	result.innerHTML = "保存成功！";
 }
